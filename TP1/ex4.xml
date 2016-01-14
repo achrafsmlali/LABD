@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itineraire>
+	<en-tete>
+		<depart>Seclin - Centre hospitalier</depart>
+		<arrivee>Roubaix - Avenue Motte</arrivee>
+		<date> Mardi 22 janvier à 12h35</date>
+		<mode>Métro-Tramway-Bus-Car</mode>
+		<preferences>Arriver le plus rapidement</preferences>
+		<vitesse>Normale</vitesse>
+		<duree>1h27</duree>
+	</en-tete>
+	<detail>
+		<etapes heure="" direction="Seclin - Hôtel de Ville" duree="13m" mode="Marche">
+			Seclin - Centre hospitalier
+		</etapes>
+		<etapes heure="14h51" direction="Lille-Porte des Postes" duree="23m" mode="Bus">
+			Bus ligne 52
+		</etapes>
+		<etapes heure="15h14" direction="" duree="4m" mode="Bus">
+			Lille - CHR B calmette
+		</etapes>
+	</detail>
+</itineraire>

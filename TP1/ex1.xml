@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exercice1>
+	<pays nom="France">
+		<capitale>
+			Paris
+		</capitale>
+		<habitant>
+			64102000
+		</habitant>
+	</pays>
+	<pays nom="Italie">
+		<capitale>
+			Rome
+		</capitale>
+		<habitant>
+			58133509
+		</habitant>
+	</pays>
+	<pays nom="Espagne">
+		<capitale>
+			Madrid
+		</capitale>
+		<habitant>
+			44708964
+		</habitant>
+	</pays>
+</exercice1>
