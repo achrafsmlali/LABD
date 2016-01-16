@@ -1,0 +1,6 @@
+<!ELEMENT maisons (maison)+>
+<!ELEMENT maison (RDC, étages)>
+<!ELEMENT RDC ((cuisine)?, (WC)?, (séjour)?, (bureau)?, (garage)?)
+<!ATTLIST maison 
+	id CDATA #REQUIRED
+>
