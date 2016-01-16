@@ -11,6 +11,8 @@ public class ex2 extends DefaultHandler {
 	
 	
 	float count = 0;
+	boolean inARoom;
+
 	/**
 	 * Evenement envoye au demarrage du parse du flux xml.
 	 * @throws SAXException en cas de probleme quelquonque ne permettant pas de
@@ -44,10 +46,15 @@ public class ex2 extends DefaultHandler {
 		if (localName == "maison"){
 			count = 0;
 			System.out.println("Maison " + attributs.getValue(0) + ":");
+			inARoom = false;
 		} else
-			for (int index = 0; index < attributs.getLength(); index++) {
-				if (attributs.getLocalName(index) == "surface-m2")
-					count += Float.parseFloat(attributs.getValue(index));
+			if (inARoom == false) {
+				for (int index = 0; index < attributs.getLength(); index++) {
+					if (attributs.getLocalName(index) == "surface-m2"){
+						count += Float.parseFloat(attributs.getValue(index));
+						inARoom = true;
+					}
+				}
 			}
 	}
 	
@@ -58,6 +65,9 @@ public class ex2 extends DefaultHandler {
 	public void endElement(String nameSpaceURI, String localName, String rawName) throws SAXException {
 		if (localName == "maison")
 			System.out.println("Surface Totale : "+ count + "m2");
+		else
+			if (inARoom == true)
+				inARoom = false;
 	}
 	
 	/**
