@@ -35,11 +35,11 @@ J'ai organisé mon XML et mes DTD de la façon suivante :
  - etapes possède 4 attributs heure, direction, duree, mode.
  - mode est obligatoire
 
- ## Ex5
+## Ex5
 
  Voir famille.dtd
 
- ## Ex6
+## Ex6
 
  Voir maisons.dtd
 
