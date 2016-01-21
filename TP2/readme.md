@@ -14,11 +14,14 @@ Sélectionne les éléments livre dont l'élément titre vaut "edition"
 
 Comparaison des éléments livre dont l'élément titre équivaut l'élément edition
 
-** Exemple : **
+**Exemple :**
 
 ` <livre>
+
 `   <titre>edition</titre>
+
 `   <edition>edition</edition>
+
 ` </livre>
 
 ### Question 2
@@ -35,11 +38,14 @@ Sélectionne le sous élément de item : livre dont l'attribut titre est "labd" 
 
 Idem que pour la première expression.
 
-** Exemple : **
+**Exemple :**
 
 ` <item>
+
 `   <livre titre="labd"/>
+
 `   <livre titre="AutreChose"/>
+
 ` </item>
 
 ### Question 3
@@ -52,15 +58,22 @@ Retourne le premier livre fils parmi la liste de tous les éléments
 
 Retourne la liste du premier livre fils à chaque noeud
 
-** Exemple : **
+**Exemple :**
 
 ` <item>
+
 `   <livres>
+
 `     <livre/>
+
 `   </livres>
+
 `   <livres>
+
 `     <livre/>
+
 `   </livres>
+
 ` </item>
 
 Ici la première expression renverra le fils du premier livre, tandis que la deuxième renverra le premier livre mais également le deuxième.
