@@ -93,4 +93,58 @@ Ici la première expression renverra le fils du premier livre, tandis que la deu
 
 ## Ex3
 
-### Question 1
+### Question 2
+
+1.
+
+> //titre[1]
+
+>
+
+2.
+
+> //ingredient/nom_ing
+
+>
+
+3.
+
+> //recette[2]/titre
+
+>
+
+4.
+
+> //recette/texte/etape[last()]
+
+> 
+
+5.
+
+> count(//recette)
+
+>
+
+6.
+
+> //recette[.//ingredients[count(*) <7]]
+
+>
+
+7.
+
+> //recette/titre[..//ingredients[count(*) <7]]
+
+>
+
+8.
+
+> //recette[.//*[contains(., "farine")]]
+
+> 
+
+9.
+
+> //recette[.//categorie[contains(.,"entrée")]]
+
+>
