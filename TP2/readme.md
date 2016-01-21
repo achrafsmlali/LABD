@@ -16,7 +16,7 @@ Comparaison des éléments livre dont l'élément titre équivaut l'élément ed
 
 **Exemple :**
 
-```
+```XML
  <livre>
    <titre>edition</titre>
    <edition>edition</edition>
@@ -39,7 +39,7 @@ Idem que pour la première expression.
 
 **Exemple :**
 
-```
+```XML
  <item>
    <livre titre="labd"/>
    <livre titre="AutreChose"/>
@@ -58,7 +58,7 @@ Retourne la liste du premier livre fils à chaque noeud
 
 **Exemple :**
 
-```
+```XML
  <item>
    <livres>
      <livre/>
