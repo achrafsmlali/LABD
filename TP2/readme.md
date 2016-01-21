@@ -16,13 +16,12 @@ Comparaison des éléments livre dont l'élément titre équivaut l'élément ed
 
 **Exemple :**
 
-` <livre>
-
-`   <titre>edition</titre>
-
-`   <edition>edition</edition>
-
-` </livre>
+```
+ <livre>
+   <titre>edition</titre>
+   <edition>edition</edition>
+ </livre>
+```
 
 ### Question 2
 
@@ -40,13 +39,12 @@ Idem que pour la première expression.
 
 **Exemple :**
 
-` <item>
-
-`   <livre titre="labd"/>
-
-`   <livre titre="AutreChose"/>
-
-` </item>
+```
+ <item>
+   <livre titre="labd"/>
+   <livre titre="AutreChose"/>
+ </item>
+```
 
 ### Question 3
 
@@ -60,21 +58,16 @@ Retourne la liste du premier livre fils à chaque noeud
 
 **Exemple :**
 
-` <item>
-
-`   <livres>
-
-`     <livre/>
-
-`   </livres>
-
-`   <livres>
-
-`     <livre/>
-
-`   </livres>
-
-` </item>
+```
+ <item>
+   <livres>
+     <livre/>
+   </livres>
+   <livres>
+     <livre/>
+   </livres>
+ </item>
+```
 
 Ici la première expression renverra le fils du premier livre, tandis que la deuxième renverra le premier livre mais également le deuxième.
 
