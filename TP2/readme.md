@@ -99,52 +99,107 @@ Ici la première expression renverra le fils du premier livre, tandis que la deu
 
 > //titre[1]
 
->
+> //titre[1]
 
 2.
 
 > //ingredient/nom_ing
 
->
+> //ingredient[@nom]
 
 3.
 
 > //recette[2]/titre
 
->
+> //recette[2]/titre
 
 4.
 
 > //recette/texte/etape[last()]
 
-> 
+> //recette/texte/etape[last()]
 
 5.
 
 > count(//recette)
 
->
+> count(//recette)
 
 6.
 
 > //recette[.//ingredients[count(*) <7]]
 
->
+> //recette[count(.//ingredients/ing-recette) < 7]
 
 7.
 
 > //recette/titre[..//ingredients[count(*) <7]]
 
->
+> //recette/titre[count(..//ingredients/ing-recette) < 7]
 
 8.
 
 > //recette[.//*[contains(., "farine")]]
 
-> 
+> //recette[.//ingredients/ing-recette[contains(@ingredient,"farine")]]
 
 9.
 
 > //recette[.//categorie[contains(.,"entrée")]]
 
->
+> //recette[contains(@categ,"entree")]
+
+## Ex4
+
+### Question 1
+
+1.
+
+> count(//dict/dict[key="Track ID"])
+
+2.
+
+> //key[text()="Album"]/following-sibling::string[1]
+
+3.
+
+> //key[text()="Genre"]/following-sibling::string[1]
+
+4.
+
+> count(//key[text()="Genre"]/following-sibling::string[1][text()="Jazz"])
+
+5.
+
+> distinct-values(//key[text()="Genre"]/following-sibling::string[1])
+
+6.
+
+> //key[text()="Play Count"]/following-sibling::integer[1]/../key[text()="Name"]/following-sibling::string[1]
+
+7.
+
+explication : on va chercher les dict ne contenant pas une clé "Play Count" et une clé "Name". On va ensuite renvoyé la valeur de l'élément string suivant le nom de ces valeures.
+
+> //dict[not(key = "Play Count") and key = "Name"]/key[text()="Name"]/following-sibling::string[1]
+
+8.
+
+> 
+
+**décomposition :**
+
+Trouver le ou les plus petits éléments year :
+
+> //dict[not(key[text()="Year"]/following-sibling::integer[1] < //dict/key[text()="Year"]/following-sibling::integer[1])]
+
+Renvoyer le nom ou les noms associé à cet(ces) élément(s) précédemment trouvé(s) :
+
+> //dict/[..]/key[text="Name"]/following-sibling::string[1]
+
+Test de vérification (tres long)
+
+//dict[not(key[text()="Year"]/following-sibling::integer[1] < //dict/key[text()="Year"]/following-sibling::integer[1])]/key[text="Year"]/following-sibling::integer[1]
+
+
+
