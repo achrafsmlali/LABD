@@ -185,21 +185,25 @@ explication : on va chercher les dict ne contenant pas une clé "Play Count" et 
 
 8.
 
-> 
+> //dict[key[text()="Year"]/following-sibling::integer[1] = min(//key[text()="Year"]/following-sibling::*[1])]/key[text()="Name"]/following-sibling::*[1]
 
 **décomposition :**
 
-Trouver le ou les plus petits éléments year :
+Trouver l'année minimum:
 
-> //dict[not(key[text()="Year"]/following-sibling::integer[1] < //dict/key[text()="Year"]/following-sibling::integer[1])]
+> min(//key[text()="Year"]/following-sibling::integer[1])
+
+Trouvé le plus petit élément year dont la valeur est min :
+
+> key[text()="Year"]/following-sibling::integer[1] = min(..)
 
 Renvoyer le nom ou les noms associé à cet(ces) élément(s) précédemment trouvé(s) :
 
-> //dict/[..]/key[text="Name"]/following-sibling::string[1]
+> //dict[..]/key[text="Name"]/following-sibling::string[1]
 
-Test de vérification (tres long)
+**version plus courte**
 
-//dict[not(key[text()="Year"]/following-sibling::integer[1] < //dict/key[text()="Year"]/following-sibling::integer[1])]/key[text="Year"]/following-sibling::integer[1]
+Attention cette version n'est pas parfaite car s'il existe un autre entier égal à l'année minimum dans les (dict) et dont la une clé "Name" existe elle renverra aussi le résultat. Cependant ici ça marche.
 
-
+> //dict[integer = min(//key[text()="Year"]/following-sibling::*[1])]/key[text()="Name"]/following-sibling::*[1]
 
