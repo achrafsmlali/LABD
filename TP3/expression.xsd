@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="expr">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="1"/>		
+
+					<xs:element name="op"/>	
+
+			</xs:sequence>
+	
+	</xs:complexType>
+
+	</xs:element>
+
+	
+</xs:schema>

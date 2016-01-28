@@ -1,62 +1,43 @@
-# README TP3 - LABD
+<?xml version="1.0" encoding="UTF-8"?>
 
-# Durand Jean-Frédéric
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-## Ex1
+<!-- 1 -->
 
-1.
-
-```XML
 <xsd:simpleType name="contrainteTemps">
 	<xsd:restriction base="xsd:time">
 		<xsd:minInclusive value ="02:30:00"/>
 		<xsd:maxInclusive value ="16:50:00"/>
 	</xsd:restriction>
 </xsd:simpleType>
-```
 
-2.
-
-```XML
+<!-- 2 -->
 <xsd:simpleType name="monReel">
 	<xsd:restriction base="xsd:float">
 		<xsd:minInclusive value="-3476.4"/>
 		<xsd:maxExclusive value="5"/>
 	</xsd:restriction>
 </xsd:simpleType>
-```
 
-3.
-```XML
+<!-- 3 -->
 <xsd:simpleType name="quatreCarac">
 	<xsd:restriction base="xsd:string">
 		<xsd:length value="4"/>
 	</xsd:restriction>
 </xsd:simpleType>
-```
 
-4.
-
-```XML
+<!-- 4 -->
 <xsd:simpleType name="chaineImage">
 	<xsd:restriction base="xsd:string">
 		<xsd:pattern value="(jpg|gif|png)"/>
 	</xsd:restriction>
 </xsd:simpleType>
-```
 
-5.
-
-```XML
+<!-- 5 -->
 <xsd:simpleType name="ISBN">
 	<xsd:restriction base="xsd:positiveInteger">
 		<xsd:totalDigits value="13"/>
 	</xsd:restriction>
 </xsd:simpleType>
-```
 
-## Ex2
-
-```XML
-</>
-```
+</xsd:schema>

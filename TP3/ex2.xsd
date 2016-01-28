@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:group name="TypeVoiture">
+	<xs:sequence>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="item"/>
+		</xs:choice>
+	</xs:sequence>
+</xs:group>
+
+
+<xs:element name="stock">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="occases"/>
+			<xs:element name="neufs"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:element>
+
+
+<xs:element name="">
+
+</xs:element>
+</xs:schema>

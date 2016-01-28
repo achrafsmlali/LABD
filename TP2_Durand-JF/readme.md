@@ -179,7 +179,7 @@ Ici la première expression renverra le fils du premier livre, tandis que la deu
 
 7.
 
-explication : on va chercher les dict ne contenant pas une clé "Play Count" et une clé "Name". On va ensuite renvoyé la valeur de l'élément string suivant le nom de ces valeures.
+_explication :_ on va chercher les dict ne contenant pas une clé "Play Count" et une clé "Name". On va ensuite renvoyé la valeur de l'élément string suivant le nom de ces valeures.
 
 > //dict[not(key = "Play Count") and key = "Name"]/key[text()="Name"]/following-sibling::string[1]
 
@@ -203,7 +203,7 @@ Renvoyer le nom ou les noms associé à cet(ces) élément(s) précédemment tro
 
 **version plus courte**
 
-Attention cette version n'est pas parfaite car s'il existe un autre entier égal à l'année minimum dans les (dict) et dont la une clé "Name" existe elle renverra aussi le résultat. Cependant ici ça marche.
+Attention cette version n'est pas parfaite car s'il existe un autre entier égal à l'année minimum dans les (dict) et dont une clé "Name" existe elle renverra aussi le résultat. Cependant ici ça marche.
 
 > //dict[integer = min(//key[text()="Year"]/following-sibling::*[1])]/key[text()="Name"]/following-sibling::*[1]
 
