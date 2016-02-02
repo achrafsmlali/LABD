@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<expr xsi:noNamespaceSchemaLocation="expression.xsd" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
->
+<expr xsi:noNamespaceSchemaLocation="../TP3/expression.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<op val="+">
 		<var>X</var>
 		<op val="-">

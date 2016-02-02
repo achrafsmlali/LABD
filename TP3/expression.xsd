@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="expr">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice minOccurs="0" maxOccurs="1"/>		
+	<xsd:element name="cons" type="xsd:byte"/>
+	<xsd:element name="var" type="xsd:string"/>
 
-					<xs:element name="op"/>	
-
-			</xs:sequence>
+	<xsd:attribute name="val">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="\+|-|\*|/"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:attribute>
 	
-	</xs:complexType>
+	<xsd:complexType name="VarCons">
+		<xsd:choice minOccurs="2" maxOccurs="2">
+			<xsd:element ref="var"/>
+			<xsd:element ref="cons"/>
+			<xsd:element name="op" type="VarCons"/>
+		</xsd:choice>
+	<xsd:attribute ref="val"/>
 
-	</xs:element>
-
+	<xsd:element name="expr">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="op" type="VarCons"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 	
 </xs:schema>

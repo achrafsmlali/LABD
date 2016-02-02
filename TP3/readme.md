@@ -57,6 +57,12 @@
 
 ## Ex2
 
-```XML
-</>
-```
+Cf ex2.xsd
+
+## Ex3
+
+Cf expression.xsd
+
+## Ex4
+
+Cf championnat.xsd

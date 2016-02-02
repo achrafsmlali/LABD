@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<stock nom="OccazEtNeufs">
+<stock xsi:noNamespaceSchemaLocation="/home/jf/Documents/Travail/M1s2/LABD/TP3/ex2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <occases>
         <item prix="2000">
             <marque>Renault</marque>
