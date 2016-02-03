@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    elementFormDefault="qualified">
+
+<xs:element  name="TypeVoiture">
+	<xs:complexType>
+		<xs:attribute name="prix" type="xs:positiveInteger"/>
+		<xs:sequence>
+			<xs:element name="marque" type="xs:string"/>
+			<xs:element name="modele" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:complexType name="TypeNeuf">
+		<xs:sequence>
+				<xs:element name="item" type="TypeVoiture" maxOccurs="unbounded"/>
+		</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SousTypeOccase">
+		<xs:complexContent>
+			<xs:extension base="TypeVoiture">
+				<xs:sequence>
+					<xs:element name="annee" type="xs:positiveInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+</xs:complexType>
+
+
+<xs:complexType name="typeOccase">
+		<xs:sequence>
+				<xs:element name="item" type="SousTypeOccase" maxOccurs="unbounded"/>
+		</xs:sequence>
+</xs:complexType>
+
+<xs:element name="stock">
+	<xs:complexType>
+		<xs:attribute name="nom" use="required"/>
+		<xs:sequence>
+			<xs:element name="occases" type="TypeOccase"/>
+			<xs:element name="neufs" type="TypeNeuf"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+</xs:schema>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="cons" type="xs:byte"/>
+	<xs:element name="var" type="xs:string"/>
+
+	<xs:attribute name="val">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="\+|-|\*|/"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	
+	<xs:complexType name="VarCons">
+		<xs:choice minOccurs="2" maxOccurs="2">
+			<xs:element ref="var"/>
+			<xs:element ref="cons"/>
+			<xs:element name="op" type="VarCons"/>
+		</xs:choice>
+		<xs:attribute ref="val"/>
+	</xs:complexType>
+
+	<xs:element name="expr">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="op" type="VarCons"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>
