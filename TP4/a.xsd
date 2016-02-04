@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema targetNamespace="b.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:b="b.xsd">
+	<xsd:include schemaLocation="b.xsd"/>
+	<xsd:element name="a">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="b:B"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
