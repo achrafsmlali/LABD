@@ -21,6 +21,11 @@
 				<xs:element ref="club" maxOccurs="unbound"/>
 			</xs:sequence>
 		</xs:complexType>
+		<!-- nom d'un club = clé -->
+		<xsd:key name="clefClub">
+			<xsd:selector xpath="club"/>
+			<xsd:field xpath="@id"/>
+		</xsd:key>
 	</xs:element>
 
 	<!--journées-->
@@ -28,21 +33,30 @@
 	<xs:element name="clubInvité" type="xs:string"/>
 	<xs:element name="date" type="xs:date"/>
 
-	<xs:element name="rencontre">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="clubReceveur" maxOccurs="1"/>
-				<xs:element ref="ClubInvité" maxOccurs="1"/>
-			</xs:sequence>
-		</xs:complexType>
+	<xs:element name="score">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]+/s[0-9]+"/>
+			</xs:restriction>
+		</xs:simpleType>
 	</xs:element>
+
+	<!--Transformation de l'élement en type-->
+	<xs:complexType name="rencontre">
+		<xs:sequence>
+			<xs:element ref="clubReceveur" maxOccurs="1"/>
+			<xs:element ref="ClubInvité" maxOccurs="1"/>
+			<xs:element ref="score" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
 
 	<xs:element name="journée">
 		<xs:complexType>
 			<xs:attribute name="num" type="xs:positiveInteger"/>
 			<xs:sequence>
 				<xs:element ref="date" maxOccurs="1"/>
-				<xs:element ref="rencontre" maxOccurs="unbound"/>
+				<!-- appel du type précédemment crée-->
+				<xs:element name="rencontre" type="rencontre" maxOccurs="unbound"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
