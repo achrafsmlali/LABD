@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xml.insee.fr/schema" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:insee="http://xml.insee.fr/schema/" xmlns="http://xml.insee.fr/schema">
+	<xs:include schemaLocation="include/insee-commun.xsd"/>
+	<xs:include schemaLocation="include/individu.xsd"/>
+	<xs:complexType name="livretDeFamille">
+		<xs:sequence>
+			<xs:element name="parents" type="parentType" maxOccurs="1"/>
+			<xs:element name="enfantsCommun" type="enfantType"/>
+			<xs:element name="deces" type="decesType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="livret" type="livretDeFamille"/>
+	<xs:complexType name="parentType">
+		<xs:sequence>
+			<xs:element name="pere" type="insee:IndividuSansFiliationType"/>
+			<xs:element name="mere" type="insee:IndividuSansFiliationType"/>
+			<xs:element name="mariage" type="mariageType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="enfantType">
+		<xs:sequence>
+			<xs:element name="enfantCommun" type="insee:NaissanceType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="decesType">
+		<xs:sequence>
+			<xs:element name="TypeDeces" type="insee:TypeDecesType"/>
+			<xs:element name="DateDeces" type="insee:DateSoupleType"/>
+			<xs:element name="LieuDeces" type="insee:LieuType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="mariageType">
+		<xs:sequence>
+			<xs:element name="DateMariage" type="insee:DateSoupleType"/>
+			<xs:element name="LieuMariage" type="insee:LieuType"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

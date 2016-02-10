@@ -7,3 +7,10 @@
 ### Question 2
 
 //nom ne renverra rien car l'espace de nom n'est pas défini.
+
+
+## Ex5
+
+> Voir insee.xsd
+
+**Problèmes rencontrés :** Le fichier n'arrive pas à accéder aux éléments du type individu.xsd. Pourtant ceux-ci sont inclus via un include et semblent avoir le même espace de nom.
