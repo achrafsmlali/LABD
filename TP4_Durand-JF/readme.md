@@ -8,6 +8,12 @@
 
 //nom ne renverra rien car l'espace de nom n'est pas défini.
 
+//* renverra tous les éléments du fichier xml.
+
+### Question 3
+
+> declare namespace bda = "http://www.fil.univ-lille1.fr/labd";
+> //bda:naissance[../bda:sexe='M']/bda:date
 
 ## Ex5
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<personnes xsi:schemaLocation="http://www.fil.univ-lille1.fr/labd ../TP4/personnes.xsd" xmlns="http://www.fil.univ-lille1.fr/labd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<personnes xmlns="http://www.fil.univ-lille1.fr/labd" xsi:schemaLocation="http://www.fil.univ-lille1.fr/labd ../TP4/personnes.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<personne id="p-034">
 		<nom>Martin</nom>
 		<prénom>Jules</prénom>
