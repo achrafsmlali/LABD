@@ -66,7 +66,7 @@
         <xsl:param name="idC"/>
         <xsl:if test="$idC = invite/text()">
             <rencontre>
-                <xsl:attribute name="num">
+                <xsl:attribute name="num" mode="getAtt">
                     <xsl:value-of select="ancestor::journee/@num"/>
                 </xsl:attribute>
                 <club>

@@ -1,1 +1,121 @@
-<?xml version="1.0" encoding="UTF-8"?><clubs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"><nom xmlns="">Lille Olympique Sporting Club Lille Metropole</nom><ville xmlns="">Lille</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Stade Rennais Football Club</nom><ville xmlns="">Rennes</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Olympique Lyonnais</nom><ville xmlns="">Lyon</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Olympique de Marseille</nom><ville xmlns="">Marseille</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Paris Saint-Germain Football Club</nom><ville xmlns="">Paris</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Montpellier Herault Sport Club</nom><ville xmlns="">Montpellier</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Association Sportive de Saint-Etienne</nom><ville xmlns="">Saint Etienne</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Girondins de Bordeaux</nom><ville xmlns="">Bordeaux</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Football Club Lorient</nom><ville xmlns="">Lorient</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Association sportive Monaco Football Club</nom><ville xmlns="">Monaco</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Olympique Gymnaste Club Nice Cote d'Azur</nom><ville xmlns="">Nice</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Stade de Reims</nom><ville xmlns="">Reims</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Sporting Club de Bastia</nom><ville xmlns="">Bastia</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Evian Thonon Gaillard Football Club</nom><ville xmlns="">Evian</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">En Avant de Guingamp</nom><ville xmlns="">Guingamp</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Toulouse Football Club</nom><ville xmlns="">Toulouse</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Football Club de Nantes</nom><ville xmlns="">Nantes</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Stade Malherbe Caen</nom><ville xmlns="">Caen</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Racing Club de Lens</nom><ville xmlns="">Lens</ville><rencontres><domicile/><exterieur/></rencontres><nom xmlns="">Football Club de Metz</nom><ville xmlns="">Metz</ville><rencontres><domicile/><exterieur/></rencontres></clubs>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+    <xsl:output method="xml" indent="yes"/>
+
+
+    <xsl:template match="/">
+        <clubs>
+            <!-- on applique la regle club -->
+            <xsl:apply-templates select="//club"/>
+        </clubs>
+    </xsl:template>
+
+    <!-- definition de la regle club -->
+    <xsl:template match="club">
+        <club>
+            <!-- attribut id pour l'element club qu'on vient de créer -->
+            <xsl:attribute name="id">
+                <xsl:value-of select="@id"/>
+            </xsl:attribute>
+            <nom>
+                <xsl:value-of select="nom"/>
+            </nom>
+            <ville>
+                <xsl:value-of select="ville"/>
+            </ville>
+
+            <rencontres>
+                <!-- on traite les rencontres à domicile -->
+                <domicile>
+                    <xsl:apply-templates select="//rencontre" mode="domicile">
+                        <xsl:with-param name="idClub" select="@id"/>
+                    </xsl:apply-templates>
+                </domicile>
+
+                <!-- on traite les rencontres à l'extérieur -->
+                <exterieur>
+                    <xsl:apply-templates select="//rencontre" mode="exterieur">
+                        <xsl:with-param name="idClub" select="@id"/>
+                    </xsl:apply-templates>
+                </exterieur>
+
+            </rencontres>
+        </club>
+    </xsl:template>
+
+    <!--- definition du template rencontre avec le mode DOMICILE -->
+    <xsl:template match="rencontre" mode="domicile">
+        <xsl:param name="idClub"/>
+        <!-- si id du club c'est le receveur alors c'est bien une rencontre à domicile
+             on peut alors travailler sur le contenu de la rencontre -->
+        <xsl:if test="$idClub = receveur/text()">
+            <rencontre>
+                <!-- attribut numéro de journéee -->
+                <xsl:attribute name="num">
+                    <xsl:apply-templates select="//journee" mode="getAtt">
+                        <xsl:with-param name="idI" select="invite"/>
+                        <xsl:with-param name="idR" select="receveur"/>
+                    </xsl:apply-templates>
+                </xsl:attribute>
+                <!-- le receveur -->
+                <club>
+                    <xsl:apply-templates select="//club" mode="domicile">
+                        <xsl:with-param name="idInvite" select="invite"/>
+                    </xsl:apply-templates>
+                </club>
+                <!-- le score -->
+                <score>
+                    <xsl:value-of select="score"/>
+                </score>
+            </rencontre>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="club" mode="domicile">
+        <xsl:param name="idInvite"/>
+        <xsl:if test="$idInvite = @id">
+            <xsl:value-of select="nom"/>
+        </xsl:if>
+    </xsl:template>
+
+    <!-- De manière équivalente on définit le template
+         avec le mode EXTERIEUR -->
+    <xsl:template match="rencontre" mode="exterieur">
+        <xsl:param name="idClub"/>
+        <xsl:if test="$idClub = invite/text()">
+            <rencontre>
+                <xsl:attribute name="num" mode="getAtt">
+                    <xsl:apply-templates select="//journee" mode="getAtt">
+                        <xsl:with-param name="idI" select="invite"/>
+                        <xsl:with-param name="idR" select="receveur"/>
+                    </xsl:apply-templates>
+                </xsl:attribute>
+                <club>
+                    <xsl:apply-templates select="//club" mode="exterieur">
+                        <xsl:with-param name="idReceveur" select="receveur/text()"/>
+                    </xsl:apply-templates>
+                </club>
+                <score>
+                    <xsl:value-of select="score"/>
+                </score>
+            </rencontre>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="club" mode="exterieur">
+        <xsl:param name="idReceveur"/>
+        <xsl:if test="$idReceveur = @id">
+            <xsl:value-of select="nom"/>
+        </xsl:if>
+    </xsl:template>
+
+    <!-- pour recupérer le numéro de journéee -->
+    <xsl:template match="journee" mode="getAtt">
+        <xsl:param name="idI"/>
+        <xsl:param name="idR"/>
+        <xsl:if test="rencontre[receveur=$idR and invite=$idI]">
+            <xsl:value-of select="@num"/>
+        </xsl:if>
+    </xsl:template>
+
+</xsl:stylesheet>
