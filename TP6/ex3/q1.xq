@@ -1,5 +1,6 @@
 xquery version "1.0";
 declare option saxon:output "omit-xml-declaration=yes";
+declare variable $f := "plant_families.xml";
 <CATALOG>
 	{
 		for $c in doc("plant_catalog.xml")//PLANT return
@@ -10,13 +11,7 @@ declare option saxon:output "omit-xml-declaration=yes";
 			<LIGHT>{$c/LIGHT}</LIGHT>
 			<AVAILABILITY>{$c/AVAILABILITY}</AVAILABILITY>
 			<FAMILY>
-				{
-					for $f in doc("plant_families.xml")//FAMILY return
-						if ($f/SPECIES = $c/BOTANICAL) then
-							$f/NAME
-						else
-							"-"
-				}
+				{fn:data(doc($f)//SPECIES[.=$c/BOTANICAL]/../NAME)}
 			</FAMILY>
 		</PLANT>
 	}
