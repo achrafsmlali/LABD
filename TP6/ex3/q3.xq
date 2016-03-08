@@ -2,11 +2,15 @@ xquery version "1.0";
 declare option saxon:output "omit-xml-declaration=yes";
 
 <CATALOG>
-	{ for $c in distinct-values(doc("plant_catalog.xml")//LIGHT) return 
+	{ for $m in distinct-values(doc("exposure.xml")//LIGHT)
+		order by $m ascending return 
 	<LIGHT>
-		<EXPOSURE>{data($c)}</EXPOSURE>
+		<EXPOSURE>
+			{data($m)}
+		</EXPOSURE>
 		{for $p in doc("plant_catalog.xml")//PLANT
-		where $p/LIGHT = $c
+		where $p/LIGHT = $m
+		order by $p/COMMON ascending
 		return
 		<PLANT>
 			{$p/COMMON}
@@ -15,10 +19,10 @@ declare option saxon:output "omit-xml-declaration=yes";
 			{$p/PRICE}
 			{$p/AVAILABILITY}
 			<FAMILY>
-				{data(doc("plant_families.xml")//SPECIES[.=$c/BOTANICAL]/../NAME)}
+				{data(doc("plant_families.xml")//SPECIES[.=$p/BOTANICAL]/../NAME)}
 			</FAMILY>
 		</PLANT>
 		}
-	</LIGHT>	
+	</LIGHT>		
 	}
-</CATALOG>	
+</CATALOG>
