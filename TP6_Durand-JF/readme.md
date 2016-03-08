@@ -1,4 +1,5 @@
 # TP6 - LABD
+
 *Durand Jean-Frédéric*
 
 # Exercice 1
@@ -47,5 +48,16 @@ Un résultat généré par le fichier est fourni dans le dossier "resultat"
 
 ## Question 1
 
-> java -cp saxon9he.jar net.sf.saxon.Query ../TP6//ex3/q1.xq > result_ex3q1.html
+> java -cp saxon9he.jar net.sf.saxon.Query ex3/q1.xq > resultats/ex3-q1.xml
 
+## Question 2
+
+> java -cp saxon9he.jar net.sf.saxon.Query ex3/q2.xq > resultats/ex3-q2.xml
+
+## Question 3
+
+> java -cp saxon9he.jar net.sf.saxon.Query ex3/q3.xq > resultats/ex3-q3.xml
+
+## Question 4
+
+> java -cp saxon9he.jar net.sf.saxon.Query ex3/q3.xq > resultats/ex3-q3.xml

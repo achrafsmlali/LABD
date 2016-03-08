@@ -14,9 +14,6 @@ declare option saxon:output "omit-xml-declaration=yes";
 			{$p/ZONE}
 			{$p/PRICE}
 			{$p/AVAILABILITY}
-			<FAMILY>
-				{data(doc("plant_families.xml")//SPECIES[.=$c/BOTANICAL]/../NAME)}
-			</FAMILY>
 		</PLANT>
 		}
 	</LIGHT>	
