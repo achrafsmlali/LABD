@@ -3,6 +3,7 @@ declare default element namespace "http://www.expression.org";
 declare option saxon:output "omit-xml-declaration=yes";
 
 (:Question 3:)
+(: java -cp saxon9he.jar net.sf.saxon.Query expression3.xq :)
 
 declare function local:eval-varrec($name, $var){
 

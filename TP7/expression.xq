@@ -3,6 +3,7 @@ declare default element namespace "http://www.expression.org";
 declare option saxon:output "omit-xml-declaration=yes";
 
 (:Question 1:)
+(: java -cp saxon9he.jar net.sf.saxon.Query expression.xq :)
 
 declare function local:printrec($name){
 	if($name/name() = 'op') then
