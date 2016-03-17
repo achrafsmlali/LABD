@@ -3,6 +3,7 @@ declare default element namespace "http://www.expression.org";
 declare option saxon:output "omit-xml-declaration=yes";
 
 (:Question 1:)
+
 declare function local:printrec($name){
 	if($name/name() = 'op') then
 		concat('(', local:printrec($name/*[1]),($name)/@val,local:printrec($name/*[2]), ')')

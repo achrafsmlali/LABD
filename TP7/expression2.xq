@@ -3,17 +3,18 @@ declare default element namespace "http://www.expression.org";
 declare option saxon:output "omit-xml-declaration=yes";
 
 (:Question 2:)
+(: java -cp saxon9he.jar net.sf.saxon.Query expression2.xq :)
 
 declare function local:evalrec($name){
 	if($name/name() = 'op') then
 		if ($name/@val = "/") then
-			xs:integer(local:evalrec($name/*[1]) div local:evalrec($name/*[2]))
+			(local:evalrec($name/*[1]) idiv local:evalrec($name/*[2]))
 			else ( if ($name/@val = "*") then
-				xs:integer(local:evalrec($name/*[1]) * local:evalrec($name/*[2]))
+				(local:evalrec($name/*[1]) * local:evalrec($name/*[2]))
 				else ( if ($name/@val = "-") then
-					xs:integer(local:evalrec($name/*[1]) - local:evalrec($name/*[2]))
+					(local:evalrec($name/*[1]) - local:evalrec($name/*[2]))
 					else ( if ($name/@val = "+") then
-						xs:integer(local:evalrec($name/*[1]) + local:evalrec($name/*[2]))
+						(local:evalrec($name/*[1]) + local:evalrec($name/*[2]))
 						else ()
 					)
 				)
@@ -24,7 +25,7 @@ declare function local:evalrec($name){
 };
 	
 declare function local:eval($name as xs:string) as xs:integer{
-	local:evalrec(doc($name)/expr/op)
+	xs:int(local:evalrec(doc($name)/expr/op))
 };
 
 
