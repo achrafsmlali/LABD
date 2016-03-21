@@ -29,7 +29,7 @@ declare function local:eval-varrec($name, $var){
 			if (count($var//*[./name() = $name]) > 1) then
 				error(xs:QName("ERROR"), "Déclaration multiple d'une même variable")
 			else( 
-				if (count($var//*[./name() = $name]) > 1) then
+				if (count($var//*[./name() = $name]) < 1) then
 					error(xs:QName("ERROR"), "Pas de déclaration pour la variable", $name)
 				else
 					($var//*[./name() = $name])
