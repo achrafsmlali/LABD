@@ -29,10 +29,12 @@ declare function local:simplifierec($name,$var){
 				error(xs:QName("ERROR"), "Déclaration multiple d'une même variable")
 			else( 
 				if (count($var//*[./name() = $name]) < 1) then
+					(:constante pour les multiplications et divisions:)
 					if($name/../@val='/' or $name/../@val='*') then
 						1
 					else
 						(
+							(:constante pour les additions et soustractions:)
 							if($name/../@val='+' or $name/../@val='-') then
 								0
 							else
