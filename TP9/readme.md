@@ -16,3 +16,34 @@ En effet je viens greffer Societe comme un Datatype du domaine de Marque. Societ
 
 ## Exercice 2
 
+J'ai déclaré Boby et Leon comme étant des personnes puis effectué une réification du sujet "Leon" avec le prédicat "estAtteintPar", l'objet "maladie".
+
+## Exercice 3
+
+<#Container> fournit la liste au format conteneur.
+
+<#Collection> fournit la liste au format rdf:first & rdf:rest.
+
+## Exercice 4
+
+### Question 1
+
+Les 10 triplets sont :
+
+- Personne, de type classe
+- Stagiaire de type classe
+- Stagiaire de sous-type Personne
+- Tuteur de type classe
+- Tuteur de sous-type Personne
+- encadre de type Propriété
+- encadre de domaine Tuteur
+- encadre va chercher ses informations parmis les informations de Stagiaire
+- encadre est une sous-propriété de "connus"
+- Ali encadre Louis
+
+### Question 2
+
+Les 5 triplets supplémentaires insérables sont :
+
+- Un Type dans une Classe
+- Un Domaine dans une Classe
