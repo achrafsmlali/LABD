@@ -45,5 +45,10 @@ Les 10 triplets sont :
 
 Les 5 triplets supplémentaires insérables sont :
 
-- Un Type dans une Classe
-- Un Domaine dans une Classe
+- Un Type pour une Classe
+- Un Domaine pour une Classe
+- Un Range pour une Classe
+
+## Exercice 5
+
+

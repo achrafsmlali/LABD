@@ -4,7 +4,7 @@
 
 <#Voiture>
   a rdfs:Class;
-  rdfs:comment " La classe Voiture" .
+  rdfs:comment "La classe Voiture" .
 
 <#Marque>
   a rdfs:Class;
