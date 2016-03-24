@@ -1,0 +1,10 @@
+@prefix ns0: <http://www.labd.org/2015/voitures/schema#> .
+
+<#vo001>
+  a ns0:Voiture ;
+  ns0:Marque <#Citroen> ;
+  ns0:nom "C4".
+
+<#Citroen>
+  a ns0:Marque;
+  ns0:nom "Citroen" .
