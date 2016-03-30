@@ -51,4 +51,9 @@ Les 5 triplets supplémentaires insérables sont :
 
 ## Exercice 5
 
+Pour plus de détail sur la façon dont j'ai modélisé l'exercice 5 voir le schema: ex5/ex5.svg.
 
+Concernant la modélisation : 
+
+    - Le schema abstrait est enregistré sous ex5/ex5.turtle
+    - Une instance contenant quelques regles de basketball & football est disponible sous ex5/instanceEx5.turtle

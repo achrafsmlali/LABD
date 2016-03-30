@@ -1,0 +1,25 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns0: <http://www.labd.org/2015/voitures/schema#> .
+
+
+<#FIBA>
+	a ns0:Regle;
+	ns0:nomJeu: "Basket-Ball";
+	ns0:nomRegle: "FIBA";
+	ns0:duree: 10;
+	ns0:nombrePeriode: 4.
+
+<#NBA>
+	a ns0:Regle;
+	ns0:nomJeu: "Basket-Ball";
+	ns0:nomRegle: "NBA";
+	ns0:duree: 12;
+	ns0:nombrePeriode: 4.
+
+<#FootballRegle>
+	a ns0:Regle;
+	ns0:nomJeu: "Football";
+	ns0:nomRegle: "Classique";
+	ns0:duree: 45;
+	ns0:nombrePeriode: 2 .
