@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <rdfs:Class rdf:about="#Voiture">
+    <rdfs:comment> La classe Voiture</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Marque">
+    <rdfs:comment>La classe Marque</rdfs:comment>
+  </rdfs:Class>
+
+  <rdf:property rdf:about="#nom">
+    <rdfs:domain rdf:resource="#Voiture"/>
+    <rdfs:domain rdf:resource="#Marque"/>
+    <rdf:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:property>
+
+</rdf:RDF>

@@ -1,0 +1,62 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns0: <http://www.labd.org/2015/voitures/schema#> .
+
+<#Sport>
+	a rdf:class;
+	rdf:comment "Classe Sport" .
+
+  <#SportCollectif>
+	a rdf:class;
+	rdf:subClassOf <#Sport>;
+	rdf:comment "Sous-classe SportCollectif" .
+
+	<#nbEquipes>
+		a rdf:property;
+		rdfs:domain <#SportCollectif>;
+		rdf:range rdfs:NumericLiteral .
+
+	<#nbJoueursParEquipe>
+		a rdf:property;
+		rdfs:domain <#SportCollectif>;
+		rdf:range rdfs:NumericLiteral .
+
+  <#SportIndividuel>
+	a rdf:class;
+	rdf:subClassOf <#Sport>;
+	rdf:comment "Sous-classe SportIndividuel" .
+
+  <#Match>
+  	a rdf:class;
+  	rdf:subClassOf <#Sport>;
+  	rdf:comment "Sous-classe Match" .
+
+  	<#Regle>
+  		a rdf:class;
+  		rdf:subClassOf <#Match>;
+  		rdf:comment "Sous-classe Règle" .
+
+  		<#nomJeu>
+  			a rdf:property;
+  			rdfs:domain <#Regle>;
+  			rdf:range rdfs:Literal .
+
+  		<#nomRegle>
+  			a rdf:property;
+  			rdfs:domain <#Regle>;
+  			rdf:range rdfs:Literal .
+
+  		<#dureePeriode>
+  			a rdf:property;
+  			rdfs:domain <#Regle>;
+  			rdf:range rdfs:NumericLiteral .
+
+  		<#nombrePeriode>
+  			a rdf:property;
+  			rdfs:domain <#Regle>;
+  			rdf:range rdfs:NumericLiteral .
+
+  	<#jeuDeBallon>
+  		a rdf:property;
+  		rdfs:domain <#Match>;
+  		rdf:range rdfs:BooleanLiteral .

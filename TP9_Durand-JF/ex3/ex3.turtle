@@ -1,0 +1,30 @@
+@prefix : <http://labd.com/test> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+<#Container> :list [
+	a rdf:Seq;
+	rdf:_1"a";
+	rdf:_2"b";
+	rdf:_3"c";
+	rdf:_4"d"
+] .
+
+
+<#Collection> :list :ns1 .
+
+:ns1
+	rdf:first "a";
+	rdf:rest :ns2 .
+	
+:ns2
+	rdf:first "b";
+	rdf:rest :ns3 .
+
+:ns3
+	rdf:first "c";
+	rdf:rest :ns4.
+
+:ns4
+	rdf:first "d";
+	rdf:rest rdf:nil .
