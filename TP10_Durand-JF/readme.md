@@ -245,8 +245,28 @@ SELECT * WHERE {
   ?x rdfs:subClassOf ?y
 }
 ```
+### Question 4
 
-a completer
+```SPARQL
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+SELECT ?y ?x
+WHERE {
+     humans:shoesize rdfs:label ?y
+     humans:shoesize rdfs:comment ?x
+     FILTER regex(?y, "shoe size")
+}
+```
+
+### Question 5
+
+```SPARQL
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+SELECT ?x
+WHERE {
+     humans:Person rdfs:label ?x
+     FILTER (LANG(?x) = "" || LANGMATCHES(LANG(?x), "fr"))
+}
+```
 
 ## Exercice 3
 
@@ -297,8 +317,28 @@ Nous obtenons désomais le couple Karl & Catherine car l'attribut hasFather proc
 
 ### Question 3
 
+```SPARQL
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+SELECT DISTINCT * WHERE
+{
+?x a humans:Lecturer
+?x rdf:type ?y
 
-a completer
+}
+```
+
+Nous obtenons 5 résultats (2 fois eve et 3 fois Laura), car "Person" a un autre type affecté "Lecturer". 
+
+```SPARQL
+PREFIX humans: <http://www.inria.fr/2007/09/11/humans.rdfs#>
+SELECT * WHERE
+{
+?x a humans:Male
+?x a humans:Person
+}
+```
+
+Nous obtenons John car d'une part il a l'attribut "Person". D'autre part il est le père de Mark un "Male".
 
 ### Question 4
 
