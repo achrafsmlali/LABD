@@ -100,5 +100,50 @@ HAVING (COUNT (?t) = 1)
 ### Question 8
 
 ```SPARQL
-
+PREFIX sch: <http://www.labd.org/2015/sport/schema#>
+SELECT ?x (count(?t) as ?y) WHERE
+{
+  ?x sch:pratique ?t
+}
+GROUP BY ?x
 ```
+
+### Question 9
+
+```SPARQL
+PREFIX sch: <http://www.labd.org/2015/sport/schema#>
+PREFIX ins: <http://www.labd.org/2015/sport/instance#>
+SELECT ?x  WHERE
+{
+  ins:Basket sch:match/sch:duree/rdfs:member ?x
+}
+```
+
+### Question 10
+
+```SPARQL
+PREFIX sch: <http://www.labd.org/2015/sport/schema#>
+PREFIX ins: <http://www.labd.org/2015/sport/instance#>
+SELECT ?x  WHERE
+{
+  ins:Basket sch:match/sch:duree/rdfs:member ?x
+  FILTER regex(?x, "NBA")
+}
+```
+
+### Question 11
+
+```SPARQL
+PREFIX sch: <http://www.labd.org/2015/sport/schema#>
+PREFIX ins: <http://www.labd.org/2015/sport/instance#>
+SELECT ?x ?t WHERE
+{
+  ?x a sch:SportCollectif
+   ?x sch:match/sch:duree/rdfs:member? ?t
+   FILTER isLiteral(?t)
+}
+```
+
+## Exercice 2
+
+### Question 1 
