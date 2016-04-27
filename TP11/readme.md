@@ -147,3 +147,20 @@ SELECT ?x ?t WHERE
 ## Exercice 2
 
 ### Question 1 
+
+```SPARQL
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX james: <http://bond007.org/RDF/mes_donnees.rdf#>
+SELECT ?x ?t WHERE
+{
+ james:me foaf:knows ?y
+ ?y foaf:name ?x
+ OPTIONAL {?y foaf:homepage ?t}
+}
+```
+
+### Question 2
+
+```SPARQL
+
+``` 
