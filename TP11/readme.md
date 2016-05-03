@@ -73,7 +73,7 @@ HAVING (COUNT (?t) > 1)
 2)
 
 ```SPARQL
-à faire
+
 ```
 
 ### Question 7
@@ -162,5 +162,50 @@ SELECT ?x ?t WHERE
 ### Question 2
 
 ```SPARQL
-
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX james: <http://bond007.org/RDF/mes_donnees.rdf#>
+SELECT ?x ?t WHERE
+{
+ james:me foaf:knows ?y
+ ?y foaf:name ?x
+OPTIONAL {?y foaf:homepage | foaf:interest | foaf:workplaceHomepage ?t}
+}
 ``` 
+
+### Question 3
+
+```SPARQL
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX james: <http://bond007.org/RDF/mes_donnees.rdf#>
+SELECT ?x WHERE
+{
+ james:me foaf:knows+/foaf:name ?x
+ FILTER NOT EXISTS { ?x foaf:name "James Bond" }
+}
+```
+
+### Question 4
+
+```SPARQL
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX james: <http://bond007.org/RDF/mes_donnees.rdf#>
+SELECT ?x WHERE
+{
+ james:me foaf:knows ?y
+ ?y foaf:name ?x
+ FILTER NOT EXISTS {?y foaf:phone ?z}
+}
+```
+
+### Question 5
+
+```SPARQL
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX james: <http://bond007.org/RDF/mes_donnees.rdf#>
+SELECT  ?x (count(?t) as ?y) WHERE
+{
+ ?x a foaf:Person 
+ ?x foaf:knows ?t
+}
+GROUP BY ?x
+```
